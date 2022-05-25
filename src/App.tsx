@@ -49,6 +49,7 @@ export const App = (): ReactElement => {
           onChangeText={value => setCode({...code, 0: value})}
           style={styles.input}
           keyboardType='numeric'
+          editable={code[1] === '' && code[2] === '' && code[3] === ''}
         />
         <TextInput
           maxLength={1}
@@ -59,7 +60,7 @@ export const App = (): ReactElement => {
           onKeyPress={({nativeEvent}) => {
             nativeEvent.key === 'Backspace' && handleBack(2);
           }}
-          editable={code[0] !== ''}
+          editable={code[0] !== '' && code[2] === '' && code[3] === ''}
         />
         <TextInput
           maxLength={1}
@@ -70,7 +71,7 @@ export const App = (): ReactElement => {
           onKeyPress={({nativeEvent}) => {
             nativeEvent.key === 'Backspace' && handleBack(3);
           }}
-          editable={code[1] !== ''}
+          editable={code[0] !== '' && code[1] !== '' && code[3] === ''}
         />
         <TextInput
           maxLength={1}
@@ -81,7 +82,7 @@ export const App = (): ReactElement => {
           onKeyPress={({nativeEvent}) => {
             nativeEvent.key === 'Backspace' && handleBack(4);
           }}
-          editable={code[2] !== ''}
+          editable={code[0] !== '' && code[1] !== '' && code[2] !== ''}
         />
       </View>
     </SafeAreaView>
